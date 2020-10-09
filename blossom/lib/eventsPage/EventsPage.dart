@@ -1,4 +1,5 @@
 import 'package:blossom/HomePage.dart';
+import 'package:blossom/main.dart';
 import 'package:blossom/registration/RegistrationDialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -189,7 +190,7 @@ class _EventsPageState extends State<EventsPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    HomePage()),
+                                    MyApp()),
                 );
                 }
 
