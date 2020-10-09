@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/Gallery.dart';
 
 class EventsPage extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double kDefaultPaddin = 0.5;
+    double kDefaultPaddin = 0.1;
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -17,6 +18,7 @@ class _EventsPageState extends State<EventsPage> {
             height: size.height,
             child: Stack(
               children: <Widget>[
+                Gallery(size : size),
                 Container(
                   margin: EdgeInsets.only(top: size.height * 0.3),
                   padding: EdgeInsets.only(
@@ -25,16 +27,24 @@ class _EventsPageState extends State<EventsPage> {
                     right: kDefaultPaddin,
                   ),
                   // height: 500,
+                  
 
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    // borderRadius: BorderRadius.only(
-                    //   topLeft: Radius.circular(24),
-                    //   topRight: Radius.circular(24),
-                    // ),
+                  ),
+                  child : new Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children : [
+                      Text(
+                        // Event Title
+                        "Discovering Treasure Through Stories",
+                        style: TextStyle(
+                          fontWeight : FontWeight.bold
+                        ),
+                      ),
+                    ]
                   )
                 ),
-                //ProductTitleWithImage(product: product)
               ],
             ),
           )
