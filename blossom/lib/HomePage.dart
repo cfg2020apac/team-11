@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'eventsPage/EventsPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,7 +11,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("HomePage"),),
-      body: Center(child: Text("HomePage")),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Events'),
+          onPressed: () {
+              // Navigate to events when tapped.
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EventsPage()),
+            );
+          },
+        ),
+      ),
     );
   }
+
+
 }
