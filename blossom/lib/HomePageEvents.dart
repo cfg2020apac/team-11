@@ -55,6 +55,7 @@ class _HomePageEventsState extends State<HomePageEvents> {
                               image: DecorationImage(
                                   image: NetworkImage(list[index]['images'][0]),
                                   fit: BoxFit.fitWidth,
+                                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(1), BlendMode.dstATop),
                                   alignment: Alignment.topCenter)),
                           child: Stack(
                             children: [
