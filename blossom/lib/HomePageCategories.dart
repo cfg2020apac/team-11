@@ -35,17 +35,15 @@ class HomePageCategories extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: categoryList.length,
               itemBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: 150,
-                  child: Card(
-                      elevation: 5,
-                      child: Center(
-                          child: Text(
-                        categoryList[index],
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ))),
-                );
+                return Container(
+                    margin: EdgeInsets.all(8),
+                    child: Chip(
+                      label: Text(categoryList[index]),
+                      labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      labelPadding: EdgeInsets.all(8),
+                      backgroundColor: Colors.blue,
+                      elevation: 3,
+                ));
               });
         },
       ),

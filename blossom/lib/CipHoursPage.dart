@@ -19,8 +19,8 @@ reportView(context) async {
         Padding(padding: const EdgeInsets.all(10)),
         Table.fromTextArray(context: context, data: const <List<String>>[
           <String>['Date', 'Event', 'Hours Generated'],
-          <String>['2020-10-11d ', 'Discovering Treasure Through Stories', '6'],
-          <String>['2020-09-11', 'Discovering Treasure Through Stories', '6']
+          <String>['2020-10-11', 'Discovering Treasure Through Stories', '6'],
+          <String>['2020-09-11', 'Standards For Being A Good Student and Child', '6']
         ]),
         Padding(padding: const EdgeInsets.all(10)),
         Paragraph( text: 'We would like to thank you for your continuous support.'),
