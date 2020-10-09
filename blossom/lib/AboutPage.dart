@@ -6,8 +6,7 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  final List<ChatMessage> _messages = <ChatMessage>[];
-  final TextEditingController _textController = new TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,29 +58,60 @@ class _AboutPageState extends State<AboutPage> {
     Navigator.of(context).push(
       new MaterialPageRoute(
         builder: (BuildContext context) {
-          return new Scaffold(
-            appBar: new AppBar(
-              title: new Text('Success'),
-            ),
-            body: new Column(children: <Widget>[
-              new Flexible(
-                  child: new ListView.builder(
-                    padding: new EdgeInsets.all(8.0),
-                    reverse: true,
-                    itemBuilder: (_, int index) => _messages[index],
-                    itemCount: _messages.length,
-                  )),
-              new Divider(height: 1.0),
-              new Container(
-                decoration: new BoxDecoration(color: Theme.of(context).cardColor),
-                child: _buildTextComposer(),
-              ),
-            ]),
-          );
+          return new ChatBot();
         },
       ),
     );
   }
+
+  _buildExpandableContent(Faq faq) {
+    List<Widget> columnContent = [];
+
+    for (String content in faq.answers)
+      columnContent.add(
+        new ListTile(
+          title: new Text(content, style: new TextStyle(fontSize: 18.0),),
+        ),
+      );
+
+    return columnContent;
+  }
+}
+
+class ChatBot extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _ChatBot();
+  }
+}
+
+class _ChatBot extends State<ChatBot> {
+  final List<ChatMessage> _messages = <ChatMessage>[new ChatMessage(
+    text: "Hi! My name is Blossom, your app companion. How may I help you?",
+    name: "Blossom",
+    type: false,
+  )];
+  final TextEditingController _textController = new TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Chat with Blossom'),
+      ),
+      body: new Column(children: <Widget>[
+        new Container(
+          child: _buildChatBody(),
+        ),
+        new Divider(height: 1.0),
+        new Container(
+          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+          child: _buildTextComposer(),
+        ),
+      ]),
+    );
+  }
+
 
   void _handleSubmitted(String text) {
     _textController.clear();
@@ -99,7 +129,7 @@ class _AboutPageState extends State<AboutPage> {
   void response(text) {
     _textController.clear();
     ChatMessage message = new ChatMessage(
-      text: "Hi! My name is Blossom, your app companion. How may I help you?",
+      text: "Badges are a way to show your friends what you are most passionate about! You can earn badges by volunteering in relevant projects. Head over to the main page to see your progress towards getting the badges as well as which volunteering events can help you achieve certain badges!",
       name: "Blossom",
       type: false,
     );
@@ -107,6 +137,17 @@ class _AboutPageState extends State<AboutPage> {
       _messages.insert(0, message);
     });
   }
+
+  Widget _buildChatBody() {
+    return new Flexible(
+        child: new ListView.builder(
+          padding: new EdgeInsets.all(8.0),
+          reverse: true,
+          itemBuilder: (_, int index) => _messages[index],
+          itemCount: _messages.length,
+        ));
+  }
+
 
   Widget _buildTextComposer() {
     return new IconTheme(
@@ -134,21 +175,7 @@ class _AboutPageState extends State<AboutPage> {
       ),
     );
   }
-
-  _buildExpandableContent(Faq faq) {
-    List<Widget> columnContent = [];
-
-    for (String content in faq.answers)
-      columnContent.add(
-        new ListTile(
-          title: new Text(content, style: new TextStyle(fontSize: 18.0),),
-        ),
-      );
-
-    return columnContent;
-  }
 }
-
 
 class Faq {
   final String question;
