@@ -27,7 +27,7 @@ class _AboutPageState extends State<AboutPage> {
                 itemCount: faqs.length,
                 itemBuilder: (context, i) {
                   return new ExpansionTile(
-                    title: new Text(faqs[i].question),
+                    title: new Text(faqs[i].question, style: TextStyle(fontSize: 18)),
                     children: <Widget>[
                       new Column(
                         children: _buildExpandableContent(faqs[i]),
@@ -37,7 +37,7 @@ class _AboutPageState extends State<AboutPage> {
                 },
               ),
               ),
-              Container(margin: new EdgeInsets.all(15.0), child: Text('Contact Us',
+              Container(margin: new EdgeInsets.all(30.0), child: Text('Contact Us',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
               Container(child: Text('Tel: (65)6464 5116')),
               Container(child: Text('WhatsApp: (65) 8313 1544')),
@@ -99,7 +99,7 @@ class _ChatBot extends State<ChatBot> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Chat with Blossom'),
+        title: new Text('Chat with Blossom', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
       ),
       body: new Column(children: <Widget>[
         new Container(
@@ -213,11 +213,7 @@ var contact = new Column(
 List<Faq> faqs = [
   new Faq(
       'Who is Blossom World Society?',
-      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged.']
-  ),
-  new Faq(
-      'Who is Blossom World Society?',
-      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged. In the course of having youths plan and run BWS\'s voluntary services, we also nurture and develop leadership qualities in the younger generation for them to be able to contribute back to community service and charitable activities.']
+      ['Established since 2008, Blossom World Society is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged.']
   ),
   new Faq(
       'How to I become a volunteer?',
@@ -228,12 +224,12 @@ List<Faq> faqs = [
       ['Badges are special achievements you can earn by participated in various projects. There are four types of badges - Sincerity, Gratitude, Service, and Kindness - representing the four core values of BWS!',]
   ),
   new Faq(
-      'How to I become a volunteer?',
-      ['All volunteers with BWS are required to have a registered account with the BWS mobile application. However, feel free to browse the project listings as a guest. If a project interests you and you fulfil the criteria, click Register on the project details page and a BWS staff member will be in contact with you shortly to confirm your participation. You can view your application process in your profile page!']
+      'How many events can I sign up for?',
+      ['There is no limit! However, we will do an initial scan for age requirement and we will send you a follow-up message on whether your registration is successful.']
   ),
   new Faq(
-      'What are badges?',
-      ['Badges are special achievements you can earn by participated in various projects. There are four types of badges - Sincerity, Gratitude, Service, and Kindness - representing the four core values of BWS!',]
+      'Can I recommend volunteer opportunities for Blossom World Society to host?',
+      ['Yep feel free to make suggestions! However, we will still do a review just to make sure that everything is okay!',]
   ),
 ];
 
@@ -272,24 +268,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 children: [
                   Text('General Enquiries',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "First Name", labelText: "First Name"),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                    },
+                  new Container(
+                    margin: const EdgeInsets.only(right: 50.0, left: 50, top: 10),
+                    child: Text('We\'ll reply directly to your chatbox within 3 working days!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "Last Name", labelText: "Last Name"),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                    },
-                  ),
+
                   TextFormField(
                     decoration: InputDecoration(
                         hintText: "Enquiry", labelText: "Enquiry"),
@@ -354,17 +339,21 @@ class ChatMessage extends StatelessWidget {
     return <Widget>[
       new Container(
         margin: const EdgeInsets.only(right: 16.0),
-        child: new CircleAvatar(child: new Text('B')),
+        child: new CircleAvatar(radius: 30.0,
+          backgroundImage:
+          NetworkImage('https://thumbs.dreamstime.com/b/smiling-woman-vector-illustration-young-happy-student-happy-girl-adult-beauty-person-healthy-71801962.jpg'),
+          backgroundColor: Colors.transparent,
+        ),
       ),
       new Expanded(
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Text(this.name,
-                style: new TextStyle(fontWeight: FontWeight.bold)),
+                style: new TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
-              child: new Text(text),
+              child: new Text(text, style: TextStyle(fontSize: 20)),
             ),
           ],
         ),
@@ -378,21 +367,21 @@ class ChatMessage extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            new Text(this.name, style: Theme.of(context).textTheme.subhead),
+            new Text(this.name, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
-              child: new Text(text),
+              child: new Text(text, style: TextStyle(fontSize: 20)),
             ),
           ],
         ),
       ),
       new Container(
         margin: const EdgeInsets.only(left: 16.0),
-        child: new CircleAvatar(
-            child: new Text(
-              this.name[0],
-              style: new TextStyle(fontWeight: FontWeight.bold),
-            )),
+        child: new CircleAvatar(radius: 30.0,
+          backgroundImage:
+          NetworkImage('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'),
+          backgroundColor: Colors.transparent,
+        ),
       ),
     ];
   }

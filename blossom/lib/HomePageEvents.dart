@@ -1,8 +1,8 @@
 import 'package:blossom/eventsPage/EventsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'event_data.dart';
 import 'eventsPage/EventsPage.dart';
+import 'package:intl/intl.dart';
 
 class HomePageEvents extends StatefulWidget {
   @override
@@ -34,7 +34,8 @@ class _HomePageEventsState extends State<HomePageEvents> {
             itemCount: stream.data.size,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 100,
+                padding: EdgeInsets.only(top: 6, bottom: 6),
+                height: 150,
                 child: Card(
                     elevation: 5,
                     child: new InkWell(
@@ -49,22 +50,42 @@ class _HomePageEventsState extends State<HomePageEvents> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
                                   image: NetworkImage(list[index]['images'][0]),
                                   fit: BoxFit.fitWidth,
+                                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(1), BlendMode.dstATop),
                                   alignment: Alignment.topCenter)),
                           child: Stack(
                             children: [
                               Padding(
-                                  padding: EdgeInsets.only(left: 10, top: 5),
+                                  padding: EdgeInsets.all(10),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(list[index]['name'],
                                           style: TextStyle(
                                               fontSize: 28,
-                                              color: Colors.white)),
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Image.asset('images/date_icon.png',
+                                              scale: 2,
+                                              color: Colors.white,),
+                                          Text(
+                                            DateFormat(' d MMM, yy   kk:mm a')
+                                                .format(list[index]['date']
+                                                    .toDate()),
+                                            style:
+                                                TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ))
                             ],
