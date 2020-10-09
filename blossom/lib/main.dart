@@ -53,7 +53,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           BottomNavigationBarItem(
             label: "Stories",
             icon: Icon(
-              Icons.search,
+              Icons.question_answer,
             ),
           ),
           BottomNavigationBarItem(
@@ -65,7 +65,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           BottomNavigationBarItem(
             label: "About",
             icon: Icon(
-              Icons.question_answer,
+              Icons.contact_support_outlined,
             ),
           ),
         ],
