@@ -15,38 +15,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.all(5),
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://banner2.cleanpng.com/20180425/rcq/kisspng-computer-icons-user-profile-encapsulated-postscrip-5ae0c2dc423176.2117820515246793882711.jpg'),
-          ),
-        ),
         centerTitle: true,
-        title: Text("Blossom Home", style: TextStyle(fontSize: 32)),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: Container(
-            padding: EdgeInsets.only(
-              left: 20,
-              right: 20,
-              bottom: 5,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                showSearch(context: context, delegate: EventItemsSearch());
-              },
-              child: TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Search',
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                  enabled: false),
-            ),
-          ),
-        ),
+        title:               Container(
+        margin: const EdgeInsets.only(top: 20),
+    child: Image.asset('images/Logo_transparent.png', fit: BoxFit.fitHeight),)
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -55,6 +27,24 @@ class _HomePageState extends State<HomePage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 20.0),
+                child: GestureDetector(
+                onTap: () {
+                  showSearch(context: context, delegate: EventItemsSearch());
+                },
+                child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(vertical: 3),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: 'Search',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    enabled: false),
+              )
+              ),
               SizedBox(height: 20),
               Text(
                 "Category",

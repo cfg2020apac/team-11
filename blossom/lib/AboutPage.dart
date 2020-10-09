@@ -13,7 +13,7 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text("About"),
+        title: Text("About", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
       ),
       body: SingleChildScrollView (
         child: Column(

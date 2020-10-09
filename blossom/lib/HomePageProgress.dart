@@ -7,7 +7,10 @@ class HomePageProgress extends StatelessWidget {
     return Column(
       children: [
         Card(
-          elevation: 5,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -46,7 +49,10 @@ class HomePageProgress extends StatelessWidget {
           ),
         ),
         Card(
-          elevation: 5,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
