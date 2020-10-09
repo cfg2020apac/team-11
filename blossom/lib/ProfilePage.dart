@@ -27,10 +27,20 @@ class _ProfilePageState extends State<ProfilePage> {
 
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data.data();
-          Profile profile = new Profile(data["FullName"], data['NoOfcompletedEvents'], data['NoOfUpcomingEvents'], data["CompletedEvents"].cast<String>());
+          Profile profile = new Profile(
+              data["FullName"],
+              data['NoOfcompletedEvents'],
+              data['NoOfUpcomingEvents'],
+              data["CompletedEvents"].cast<String>(),
+              data["imageUrl"]
+              );
           return Scaffold(
-              body: ListView(children: <Widget>[ProfileHeader(profile:profile), Container(height:20), Badges(), HistoryEvents(profile:profile)])
-          );
+              body: ListView(children: <Widget>[
+            ProfileHeader(profile: profile),
+            Container(height: 20),
+            Badges(),
+            HistoryEvents(profile: profile)
+          ]));
         }
 
         return Text("loading");
@@ -49,55 +59,62 @@ class HistoryEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50),
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget> [Text("Events Volunteered:", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20)),
-            ],
-          ),
-          Container(height:10),
-          Row(
-            children: <Widget> [Text(profile.completedEvents[0]),
-            ],
-          ),
-          Row(
-            children: <Widget> [Text(profile.completedEvents[1]),
-            ],
-          ),
-          Container(height:30),
+        margin: EdgeInsets.symmetric(horizontal: 50),
+        child: Column(children: <Widget>[
+          SizedBox(height: 10),
+          Text("Events Volunteered:",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24)),
           Container(
-            width: 250.00,
-
-            child: RaisedButton(
-                onPressed: () => {
-                  reportView(context)
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)
+            height: 120,
+            padding: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  profile.completedEvents[0],
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
                 ),
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Container(
-                    constraints: BoxConstraints(maxWidth: 250.00, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text("Generate CIP hours",
-                      style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight:FontWeight.w300),
-                    ),
-                  ),
-                )
+              ),
             ),
           ),
-
-    ]
-    )
-    );
+          Container(
+            height: 120,
+            padding: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  profile.completedEvents[1],
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+          Container(height: 30),
+          Container(
+            width: 250.00,
+            child: RaisedButton(
+                color: Colors.blueAccent,
+                onPressed: () => {reportView(context)},
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(80.0)),
+                padding: EdgeInsets.all(0.0),
+                child: Text(
+                  "Generate CIP hours",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w300),
+                )),
+          ),
+        ]));
   }
-
 }
 
 class Badges extends StatelessWidget {
@@ -106,30 +123,55 @@ class Badges extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Text("Badges Collected:",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24)),
+          SizedBox(height: 10),
           Row(
-            children: <Widget> [Text("Badges Collected:", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20))],
-          ),
-          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-                  Image.asset('images/Badge1.png',
-                      height: 50,
-                      width: 50),
-                  Container(width:5),
-                  Image.asset('images/Badge2.png',
-                      height: 50,
-                      width: 50),
-                  Container(width:5),
-                  Image.asset('images/Badge3.png',
-                      height: 50,
-                      width: 50),
-                  Container(width:5),
-                  Image.asset('images/Badge4.png',
-                      height: 50,
-                      width: 50),],
-              )
+              CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        "https://3.bp.blogspot.com/_jguUYhL0gEg/TJx5BexXFKI/AAAAAAAAGpA/77uWXV-VWS8/s1600/Stock+vector+-+Helpful+hands+1.png"),
+                  )),
+              Container(width: 5),
+              CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        "https://lh3.googleusercontent.com/proxy/iqEVu3eEEzuNo2DN99DtanjTfzB92DnmDCzOVq_LphBAp_oEZcLghneTM7gWxaKrksxQxnWQkqRuP1gfVCFl9A0Ma7Ld9e4"),
+                  )),
+              Container(width: 5),
+              CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        "https://cdn2.iconfinder.com/data/icons/love-and-valentine-1-5/65/23-512.png"),
+                  )),
+              Container(width: 5),
+              CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        "https://cdn2.iconfinder.com/data/icons/love-and-valentine-1-5/65/23-512.png"),
+                  )),
+              SizedBox(height: 10),
             ],
-          ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -148,30 +190,27 @@ class ProfileHeader extends StatelessWidget {
           Container(
             height: 200.0,
             child: Center(
-              child: Column (
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      profile.imageUrl,
-              ), radius :50.0),
-                    Container (
-                      height:10
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        profile.name,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                  CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        profile.imageUrl,
                       ),
+                      radius: 50.0),
+                  Container(height: 10),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      profile.name,
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
                     ),
-                  ]
-              )
-            ),
+                  ),
+                ])),
           ),
-
           Container(
             margin: EdgeInsets.symmetric(horizontal: 50),
             child: Row(
@@ -180,27 +219,23 @@ class ProfileHeader extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Text("Events volunteered"),
-                    Container (
-                        height:10
-                    ),
+                    Container(height: 10),
                     Text(
                       profile.noOfcompletedEvents,
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     )
-
                   ],
                 ),
                 Column(
                   children: <Widget>[
                     Text("Events upcoming"),
-                    Container (
-                        height:10
-                    ),
+                    Container(height: 10),
                     Text(
                       profile.noOfUpComingEvents,
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     )
-
                   ],
                 )
               ],

@@ -5,11 +5,11 @@ class Profile {
   String imageUrl;
   List<String> completedEvents;
 
-  Profile(String name, String noOfcompletedEvents, String noOfUpComingEvents, List<String> completed){
+  Profile(String name, String noOfcompletedEvents, String noOfUpComingEvents, List<String> completed, String imageUrl){
     this.name = name;
     this.noOfcompletedEvents = noOfcompletedEvents;
     this.noOfUpComingEvents = noOfUpComingEvents;
-    this.imageUrl = "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
+    this.imageUrl = imageUrl;
     this.completedEvents = completed;
   }
 }
