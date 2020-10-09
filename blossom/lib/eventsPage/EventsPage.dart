@@ -14,7 +14,10 @@ class EventsPage extends StatefulWidget {
   _EventsPageState createState() => _EventsPageState();
 }
 
+
 class _EventsPageState extends State<EventsPage> {
+  bool checkCompleted = false;
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,6 +29,23 @@ class _EventsPageState extends State<EventsPage> {
     String trainingTimeString =
         DateFormat(' d MMM, yy   kk:mm a').format(trainingTime);
     String eventDescription = widget.msg['description'];
+
+    if (FirebaseAuth.instance.currentUser != null)
+      FirebaseFirestore.instance.collection('users')
+                              .where('uid', isEqualTo: FirebaseAuth.instance.currentUser.uid)
+                              .get()
+                              .then((QuerySnapshot querySnapshot) => {
+                                  querySnapshot.docs.forEach((doc) {
+                                      print(doc);
+                                      doc["completed_events"].forEach((eventName) {
+                                        print(eventName);
+                                        print(widget.msg['name']);
+                                        if(widget.msg['name'] == eventName)
+                                          checkCompleted = true;
+                                      });
+                                  })
+                              });
+
     // String eventTimeString = DateFormat.yMMMMd().add_jm().format(eventTime);
     double kDefaultPaddin = 10;
     return Material(
@@ -79,14 +99,16 @@ class _EventsPageState extends State<EventsPage> {
             padding: EdgeInsets.all(20),
             child: RaisedButton(
               padding: EdgeInsets.all(20),
-              color: Colors.blueAccent,
+              color: checkCompleted? Colors.grey[400] : Colors.blueAccent,
               onPressed: () async {
                 final FirebaseAuth auth = FirebaseAuth.instance;
                 User authUser =  auth.currentUser;
+                if(checkCompleted){
+                  return null;
+                }
 
-                print(authUser.uid);
-
-                if (authUser==null){
+                // if (authUser==null){
+                if(true){
                   showDialog(
                   context: context,
                   builder: (BuildContext dialogContext) {
@@ -95,12 +117,17 @@ class _EventsPageState extends State<EventsPage> {
                   );
                 }
 
+                else{
+                  checkCompleted = true;
+                  
+                }
+
                 
 
 
               },
               child: Center(
-                child: Text("Register for event",
+                child: Text(FirebaseAuth.instance.currentUser == null ? "Log in / Register" : checkCompleted ? "Registered" : "Register for this event",
                     style: TextStyle(
                       fontSize: 20,
                     )),
