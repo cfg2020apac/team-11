@@ -1,9 +1,6 @@
 import 'package:blossom/HomePageProgress.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'HomePageCategories.dart';
 import 'HomePageEvents.dart';
-
 import 'event_data.dart';
 import 'package:flutter/material.dart';
 
@@ -13,94 +10,77 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Query query = FirebaseFirestore.instance.collection('events');
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: Padding(
-            padding: EdgeInsets.all(5),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://banner2.cleanpng.com/20180425/rcq/kisspng-computer-icons-user-profile-encapsulated-postscrip-5ae0c2dc423176.2117820515246793882711.jpg'),
-            ),
+      appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.all(5),
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+                'https://banner2.cleanpng.com/20180425/rcq/kisspng-computer-icons-user-profile-encapsulated-postscrip-5ae0c2dc423176.2117820515246793882711.jpg'),
           ),
-          centerTitle: true,
-          title: Text("Blossom Home", style: TextStyle(fontSize: 32)),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: Container(
-              padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-                bottom: 5,
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  
-                  showSearch(context: context, delegate: EventItemsSearch());
-                },
-                child: TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: 'Search',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                    enabled: false),
-              ),
+        ),
+        centerTitle: true,
+        title: Text("Blossom Home", style: TextStyle(fontSize: 32)),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Container(
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: 5,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                showSearch(context: context, delegate: EventItemsSearch());
+              },
+              child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'Search',
+                    prefixIcon: Icon(Icons.search),
+                  ),
+                  enabled: false),
             ),
           ),
         ),
-        body: StreamBuilder(
-            stream: query.snapshots(),
-            builder: (context, stream) {
-              if (stream.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              }
-
-              if (stream.hasError) {
-                return Center(child: Text(stream.error.toString()));
-              }
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 20),
-                      Text(
-                        "Category",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      HomePageCategories(),
-                      SizedBox(height: 20),
-                      Text(
-                        "Progress",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      HomePageProgress(),
-                      SizedBox(height: 20),
-                      Text(
-                        "Event List",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      HomePageEvents()
-                    ],
-                  ),
-                ),
-              );
-            }));
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                "Category",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              HomePageCategories(),
+              SizedBox(height: 20),
+              Text(
+                "Progress",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              HomePageProgress(),
+              SizedBox(height: 20),
+              Text(
+                "Event List",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              HomePageEvents()
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
 class EventItemsSearch extends SearchDelegate<EventItem> {
-  
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(

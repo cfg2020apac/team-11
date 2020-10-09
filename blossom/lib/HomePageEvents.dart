@@ -48,9 +48,8 @@ class _HomePageEventsState extends State<HomePageEvents> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(list[index]['name'],
-                                      style: TextStyle(fontSize: 28, color:Colors.white)),
-                                  Text(list[index]['description'],
-                                  style:TextStyle(color:Colors.white))
+                                      style: TextStyle(
+                                          fontSize: 28, color: Colors.white)),
                                 ],
                               ))
                         ],
