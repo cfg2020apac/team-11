@@ -213,11 +213,7 @@ var contact = new Column(
 List<Faq> faqs = [
   new Faq(
       'Who is Blossom World Society?',
-      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged.']
-  ),
-  new Faq(
-      'Who is Blossom World Society?',
-      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged. In the course of having youths plan and run BWS\'s voluntary services, we also nurture and develop leadership qualities in the younger generation for them to be able to contribute back to community service and charitable activities.']
+      ['Established since 2008, Blossom World Society is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged.']
   ),
   new Faq(
       'How to I become a volunteer?',
@@ -228,12 +224,12 @@ List<Faq> faqs = [
       ['Badges are special achievements you can earn by participated in various projects. There are four types of badges - Sincerity, Gratitude, Service, and Kindness - representing the four core values of BWS!',]
   ),
   new Faq(
-      'How to I become a volunteer?',
-      ['All volunteers with BWS are required to have a registered account with the BWS mobile application. However, feel free to browse the project listings as a guest. If a project interests you and you fulfil the criteria, click Register on the project details page and a BWS staff member will be in contact with you shortly to confirm your participation. You can view your application process in your profile page!']
+      'How many events can I sign up for?',
+      ['There is no limit! However, we will do an initial scan for age requirement and we will send you a follow-up message on whether your registration is successful.']
   ),
   new Faq(
-      'What are badges?',
-      ['Badges are special achievements you can earn by participated in various projects. There are four types of badges - Sincerity, Gratitude, Service, and Kindness - representing the four core values of BWS!',]
+      'Can I recommend volunteer opportunities for Blossom World Society to host?',
+      ['Yep feel free to make suggestions! However, we will still do a review just to make sure that everything is okay!',]
   ),
 ];
 
