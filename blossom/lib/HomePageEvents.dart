@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class HomePageEvents extends StatefulWidget {
   @override
@@ -25,7 +27,8 @@ class _HomePageEventsState extends State<HomePageEvents> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Event " + index.toString(), style:TextStyle(fontSize:28)),
+                          Text("Event " + index.toString(),
+                              style: TextStyle(fontSize: 28)),
                           Text("Event description")
                         ],
                       ))

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "484228684305",
+    "firebase_url": "https://jpmc-team11-2da73.firebaseio.com",
+    "project_id": "jpmc-team11-2da73",
+    "storage_bucket": "jpmc-team11-2da73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484228684305:android:3a10edb52f61300f06efb0",
+        "android_client_info": {
+          "package_name": "com.example.blossom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484228684305-hulc4utff9om78n6321fk4q9q9lirld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH5bhnFHyrihtBIOTsXuD7pSEisnMwJKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484228684305-hulc4utff9om78n6321fk4q9q9lirld9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
