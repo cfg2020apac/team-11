@@ -6,3 +6,4 @@ Team*.zip
 *.ovpn
 .idea/
 *.iml
+.lock
