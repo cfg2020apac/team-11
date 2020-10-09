@@ -142,7 +142,7 @@ class _RegistrationDialog extends State<RegistrationDialog> {
                 height: 20.0,
               ),
               TextField(
-                obscureText: true,
+                obscureText: false,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   name = value;
@@ -168,7 +168,7 @@ class _RegistrationDialog extends State<RegistrationDialog> {
                 height: 20.0,
               ),
               TextField(
-                obscureText: true,
+                obscureText: false,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   mobileNum = value;
@@ -178,9 +178,12 @@ class _RegistrationDialog extends State<RegistrationDialog> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(32.0)))),
               ),
-
+              SizedBox(
+                height: 20.0,
+              ),
               DropdownButton<String>(
                 value: race,
+                hint: Text("Select race"),
                 isExpanded: true,
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 24,

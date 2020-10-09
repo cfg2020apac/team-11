@@ -1,3 +1,4 @@
+import 'package:blossom/HomePage.dart';
 import 'package:blossom/registration/RegistrationDialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +17,7 @@ class EventsPage extends StatefulWidget {
 
 
 class _EventsPageState extends State<EventsPage> {
-  bool checkCompleted = false;
+  bool checkCompleted;
   
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _EventsPageState extends State<EventsPage> {
     String trainingTimeString =
         DateFormat(' d MMM, yy   kk:mm a').format(trainingTime);
     String eventDescription = widget.msg['description'];
+    checkCompleted = false;
 
     if (FirebaseAuth.instance.currentUser != null)
       FirebaseFirestore.instance.collection('users')
@@ -38,13 +40,16 @@ class _EventsPageState extends State<EventsPage> {
                                   querySnapshot.docs.forEach((doc) {
                                       print(doc);
                                       doc["completed_events"].forEach((eventName) {
-                                        print(eventName);
-                                        print(widget.msg['name']);
+                                          print(eventName);
+                                          print(widget.msg['name']);
                                         if(widget.msg['name'] == eventName)
                                           checkCompleted = true;
                                       });
                                   })
                               });
+    
+    String registeredDisplayButton = "Register for this event";
+    if(checkCompleted) registeredDisplayButton = "Registered";
 
     // String eventTimeString = DateFormat.yMMMMd().add_jm().format(eventTime);
     double kDefaultPaddin = 10;
@@ -100,15 +105,14 @@ class _EventsPageState extends State<EventsPage> {
             child: RaisedButton(
               padding: EdgeInsets.all(20),
               color: checkCompleted? Colors.grey[400] : Colors.blueAccent,
-              onPressed: () async {
+              onPressed: () async{
                 final FirebaseAuth auth = FirebaseAuth.instance;
                 User authUser =  auth.currentUser;
-                if(checkCompleted){
-                  return null;
-                }
+                print(checkCompleted);
+               
 
-                // if (authUser==null){
-                if(true){
+                if (authUser==null){
+                // if(true){
                   showDialog(
                   context: context,
                   builder: (BuildContext dialogContext) {
@@ -118,16 +122,25 @@ class _EventsPageState extends State<EventsPage> {
                 }
 
                 else{
+                  print("set to true");
                   checkCompleted = true;
-                  
                 }
+
+                print("Rerouting");
+
+                Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HomePage()),
+                );
 
                 
 
 
               },
               child: Center(
-                child: Text(FirebaseAuth.instance.currentUser == null ? "Log in / Register" : checkCompleted ? "Registered" : "Register for this event",
+                child: Text(FirebaseAuth.instance.currentUser == null ? "Log in / Register" : registeredDisplayButton,
                     style: TextStyle(
                       fontSize: 20,
                     )),
