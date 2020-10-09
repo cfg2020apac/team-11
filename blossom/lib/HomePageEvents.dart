@@ -25,7 +25,7 @@ class _HomePageEventsState extends State<HomePageEvents> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Event Title", style:TextStyle(fontSize:28)),
+                          Text("Event " + index.toString(), style:TextStyle(fontSize:28)),
                           Text("Event description")
                         ],
                       ))
