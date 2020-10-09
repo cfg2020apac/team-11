@@ -1,4 +1,6 @@
+import 'package:blossom/registration/RegistrationDialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'components/Gallery.dart';
 import 'package:intl/intl.dart';
@@ -69,7 +71,25 @@ class _EventsPageState extends State<EventsPage> {
             child: RaisedButton(
               padding:EdgeInsets.all(20),
               color: Colors.blueAccent,
-              onPressed: () {},
+              onPressed: () async {
+                final FirebaseAuth auth = FirebaseAuth.instance;
+                User authUser =  auth.currentUser;
+
+                print(authUser.uid);
+
+                if (authUser==null){
+                  showDialog(
+                  context: context,
+                  builder: (BuildContext dialogContext) {
+                    return  RegistrationDialog();
+                    }
+                  );
+                }
+
+                
+
+
+              },
               child: Center(
                 child: Text("Register for event",
                     style: TextStyle(

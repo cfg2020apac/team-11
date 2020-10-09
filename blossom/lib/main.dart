@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 
 import 'AboutPage.dart';
@@ -10,14 +11,35 @@ import 'StoriesPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyBottomNavigationBar());
+    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  
+    return FutureBuilder(
+      // Initialize FlutterFire:
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return FlutterEasyLoading(child: Text("Error"));
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+           return MaterialApp(home: MyBottomNavigationBar());
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return FlutterEasyLoading(child: Text("Please wait.."));
+      },
+    );
+    
+   
   }
 }
 

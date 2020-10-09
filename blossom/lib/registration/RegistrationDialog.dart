@@ -7,57 +7,56 @@ import '../HomePage.dart';
 
 // import 'login.dart';
 
-void main() => runApp(MyApp());
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+// void main() => runApp(MyApp());
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     final Future<FirebaseApp> _initialization = Firebase.initializeApp();
     
-    return FutureBuilder(
-      // Initialize FlutterFire:
-      future: _initialization,
-      builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          return FlutterEasyLoading(child: Text("Error"));
-        }
+//     return FutureBuilder(
+//       // Initialize FlutterFire:
+//       future: _initialization,
+//       builder: (context, snapshot) {
+//         // Check for errors
+//         if (snapshot.hasError) {
+//           return FlutterEasyLoading(child: Text("Error"));
+//         }
 
-        // Once complete, show your application
-        if (snapshot.connectionState == ConnectionState.done) {
-           return MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: MyHomePage(),
-          );
-        }
+//         // Once complete, show your application
+//         if (snapshot.connectionState == ConnectionState.done) {
+//            return MaterialApp(
+//             title: 'Flutter Demo',
+//             theme: ThemeData(
+//               primarySwatch: Colors.blue,
+//             ),
+//             home: MyHomePage(),
+//           );
+//         }
 
-        // Otherwise, show something whilst waiting for initialization to complete
-        return FlutterEasyLoading(child: Text("Please wait.."));
-      },
-    );
+//         // Otherwise, show something whilst waiting for initialization to complete
+//         return FlutterEasyLoading(child: Text("Please wait.."));
+//       },
+//     );
     
    
-  }
-}
-class MyHomePage extends StatefulWidget {
+//   }
+// }
+class RegistrationDialog extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _RegistrationDialog createState() => _RegistrationDialog();
 }
-class _MyHomePageState extends State<MyHomePage> {
+
+class _RegistrationDialog extends State<RegistrationDialog> {
   bool showProgress = false;
   FirebaseAuth auth = FirebaseAuth.instance;
   String email, password;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Firebase Authentication"),
-      ),
-      body: Center(
+    return AlertDialog(
+      title: Text("Firebase Authentication"),
+      content: Center(
         child: ModalProgressHUD(
           inAsyncCall:showProgress ,
           child: Column(
