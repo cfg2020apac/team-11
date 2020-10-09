@@ -69,8 +69,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
 }
 
 class EventItemsSearch extends SearchDelegate<EventItem> {
@@ -110,7 +108,7 @@ class EventItemsSearch extends SearchDelegate<EventItem> {
     final eventList = query.isEmpty
         ? loadEventItem()
         : loadEventItem()
-            .where((p) => p.title.toLowerCase().contains(query.toLowerCase()))
+            .where((p) => p.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
 
     return eventList.isEmpty
@@ -128,11 +126,11 @@ class EventItemsSearch extends SearchDelegate<EventItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        listItem.title,
+                        listItem.name,
                         style: TextStyle(fontSize: 20),
                       ),
                       Text(
-                        listItem.category,
+                        listItem.categoryName,
                         style: TextStyle(color: Colors.grey),
                       ),
                       Divider()

@@ -18,18 +18,13 @@ class HomePageProgress extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundColor: Colors.black,
-                  child: CircleAvatar(
-                    radius: 28,
-                    backgroundImage: NetworkImage(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Furry_blue_paw_vector_logo.svg/1157px-Furry_blue_paw_vector_logo.svg.png'),
-                  ),
+                  child: Image.asset('images/Badge1.png'),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Furry Paw Badge",
+                      "BWS Gratitude Ambassador",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -42,7 +37,7 @@ class HomePageProgress extends StatelessWidget {
                 ),
                 Text(
                   "70%",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -60,18 +55,13 @@ class HomePageProgress extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundColor: Colors.black,
-                  child: CircleAvatar(
-                    radius: 28,
-                    backgroundImage: NetworkImage(
-                        'https://banner2.cleanpng.com/20180612/hv/kisspng-computer-icons-designer-avatar-5b207ebb279901.8233901115288562511622.jpg'),
-                  ),
+                  child: Image.asset('images/Badge2.png'),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Children's Favorite",
+                      "BWS Kindness Ambassador",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -84,7 +74,7 @@ class HomePageProgress extends StatelessWidget {
                 ),
                 Text(
                   "50%",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
