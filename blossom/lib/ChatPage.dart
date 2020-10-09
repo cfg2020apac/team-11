@@ -49,21 +49,27 @@ class _ChatPageState extends State<ChatPage> {
   void response(text) {
     _textController.clear();
     ChatMessage message;
-    if (text == "Yes") {
+    if (text == "Yes" || text == "yes") {
       message = new ChatMessage(
         text: "Awesome! Your status has been updated. We look forward to seeing you!",
         name: "Blossom",
         type: false,
       );
-    } if (text == "No") {
+    } else if (text == "No" || text == "no") {
       message = new ChatMessage(
         text: "So sorry to hear that you can't join the event! Do look out for our other events. Hope to see you soon!",
         name: "Blossom",
         type: false,
       );
-    } if (text == "What are badges?") {
+    } else if (text == "What are badges?") {
       message = new ChatMessage(
         text: "Badges are a way to show your friends what you are most passionate about! You can earn badges by volunteering in relevant projects. Head over to the main page to see your progress towards getting the badges as well as which volunteering events can help you achieve certain badges!",
+        name: "Blossom",
+        type: false,
+      );
+    } else {
+      message = new ChatMessage(
+        text: "Sorry, I did not understand that.",
         name: "Blossom",
         type: false,
       );

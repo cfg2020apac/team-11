@@ -35,7 +35,7 @@ class _StoriesPageState extends State<StoriesPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Stories"),
+        title: Text("Stories", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
       ),
       body: Column(
         children: <Widget>[
