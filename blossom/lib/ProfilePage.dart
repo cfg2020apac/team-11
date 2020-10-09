@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:blossom/model/Profile.dart';
+import 'package:blossom/CipHoursPage.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -8,19 +9,19 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Profile profile = new Profile("Bobby", "5");
+  Profile profile = new Profile("Bobby", "2");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: <Widget>[ProfileHeader(profile:profile), Container(height:20), Badges(), HistoryEvents() ])
+      body: ListView(children: <Widget>[ProfileHeader(profile:profile), Container(height:20), Badges(), HistoryEvents()])
     );
   }
 }
 
 class HistoryEvents extends StatelessWidget {
   @override
-  Widget build(BuildContext) {
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50),
       child: Column(
@@ -31,15 +32,11 @@ class HistoryEvents extends StatelessWidget {
           ),
           Container(height:10),
           Row(
-            children: <Widget> [Text("Lorem ipsum"),
+            children: <Widget> [Text("Discovering Treasure Through Stories"),
             ],
           ),
           Row(
-            children: <Widget> [Text("Lorem ipsum"),
-            ],
-          ),
-          Row(
-            children: <Widget> [Text("Lorem ipsum"),
+            children: <Widget> [Text("Discovering Treasure Through Stories"),
             ],
           ),
           Container(height:30),
@@ -48,7 +45,7 @@ class HistoryEvents extends StatelessWidget {
 
             child: RaisedButton(
                 onPressed: () => {
-                  //TODO do pdf
+                  reportView(context)
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(80.0)
