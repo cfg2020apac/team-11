@@ -6,11 +6,11 @@ class StoriesPage extends StatefulWidget {
 }
 
 var storyList = [
-  ["Alex Ho","4 Oct 2020","Tuition for primary school children","It was a great experience and I was glad to be part of this activity and grow as an individual!"],
-  ["John Tan","29 Sep 2020","Beach cleaning at East Coast Park","It was a great experience and I was glad to be part of this activity and grow as an individual!"],
-  ["Michael Lim","27 Sep 2020","Social media with elderly","It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal! It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal"],
-  ["Nicole Ong","18 Sep 2020","Food drive at Ang Mo Kio","It was a great experience and I was glad to be part of this activity and grow as an individual!"],
-  ["Valerie Ng","2 Sep 2020","Visit to Macritchie reservoir","It was a great experience and I was glad to be part of this activity and grow as an individual!"],
+  ["Alex Ho","4 Oct 2020","Tuition for primary school children","It was a great experience and I was glad to be part of this activity and grow as an individual!","https://image.shutterstock.com/image-photo/passport-photo-portrait-asian-smiling-260nw-1041841363.jpg"],
+  ["John Tan","29 Sep 2020","Beach cleaning at East Coast Park","It was a great experience and I was glad to be part of this activity and grow as an individual!","https://images.unsplash.com/photo-1522602724102-7b966b111376?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"],
+  ["Michael Lim","27 Sep 2020","Social media with elderly","It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal! It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal It was a great experience and I was glad to be part of this activity and grow as an individuaaaaaal","https://i.pinimg.com/236x/b2/0c/d2/b20cd2371badebe689d302429ed525d2.jpg"],
+  ["Nicole Ong","18 Sep 2020","Food drive at Ang Mo Kio","It was a great experience and I was glad to be part of this activity and grow as an individual!","https://image.shutterstock.com/image-photo/passport-photo-portrait-asian-smiling-260nw-1041841363.jpg"],
+  ["Valerie Ng","2 Sep 2020","Visit to Macritchie reservoir","It was a great experience and I was glad to be part of this activity and grow as an individual!","https://images.unsplash.com/photo-1522602724102-7b966b111376?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"],
 ];
 
 String input;
@@ -116,7 +116,7 @@ class _StoriesPageState extends State<StoriesPage> {
                             ListTile(
                               leading: ExcludeSemantics(
                                 child: CircleAvatar(
-                                  child: Icon(Icons.person),
+                                  backgroundImage: NetworkImage(storyList[index][4]),
                                   // child: ImageIcon(
                                   //   NetworkImage("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg/1200px-ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg"),
                                   //   size: 40,
