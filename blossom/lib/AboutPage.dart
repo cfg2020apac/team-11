@@ -272,24 +272,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 children: [
                   Text('General Enquiries',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "First Name", labelText: "First Name"),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                    },
+                  new Container(
+                    margin: const EdgeInsets.only(right: 50.0, left: 50, top: 10),
+                    child: Text('We\'ll reply directly to your chatbox within 3 working days!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "Last Name", labelText: "Last Name"),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                    },
-                  ),
+
                   TextFormField(
                     decoration: InputDecoration(
                         hintText: "Enquiry", labelText: "Enquiry"),
