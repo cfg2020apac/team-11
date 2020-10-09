@@ -19,7 +19,8 @@ class _AboutPageState extends State<AboutPage> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children:<Widget>[
-              Container(margin: new EdgeInsets.all(15.0), child: Text('FAQs')),
+              Container(margin: new EdgeInsets.all(15.0), child: Text('FAQs',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
               new Container(
                 height: MediaQuery.of(context).size.height / 2,
                 child: new ListView.builder(
@@ -36,7 +37,8 @@ class _AboutPageState extends State<AboutPage> {
                 },
               ),
               ),
-              Container(margin: new EdgeInsets.all(15.0), child: Text('Contact Us')),
+              Container(margin: new EdgeInsets.all(15.0), child: Text('Contact Us',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
               Container(child: Text('Tel: (65)6464 5116')),
               Container(child: Text('WhatsApp: (65) 8313 1544')),
               Container(child: Text('Email: contactus@blossomworld.sg')),
@@ -268,7 +270,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               const EdgeInsets.symmetric(horizontal: 8.0, vertical: 19.0),
               child: Column(
                 children: [
-                  Text('General Enquiries'),
+                  Text('General Enquiries',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   TextFormField(
                     decoration: InputDecoration(
                         hintText: "First Name", labelText: "First Name"),
