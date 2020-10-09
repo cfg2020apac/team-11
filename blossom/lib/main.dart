@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'AboutPage.dart';
 import 'HomePage.dart';
+import 'ChatPage.dart';
 import 'ProfilePage.dart';
 import 'StoriesPage.dart';
 
@@ -29,6 +30,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   final List<Widget> _screens = [
     HomePage(),
+    ChatPage(),
     StoriesPage(),
     ProfilePage(),
     AboutPage()
@@ -51,6 +53,12 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
             label: "Home",
             icon: Icon(
               Icons.home,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Chat",
+            icon: Icon(
+              Icons.chat,
             ),
           ),
           BottomNavigationBarItem(
