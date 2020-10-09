@@ -39,10 +39,30 @@ class _EventsPageState extends State<EventsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(widget.msg['name'],
-                      style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                  Divider(),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.75,
+                          child: Column(
+                            children: [
+                              Text(widget.msg['name'],
+                                  style: TextStyle(
+                                      fontSize: 32, fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              NetworkImage(widget.msg["badge_url"]),
+                        )
+                      ],
+                    ),
+                  ),
+                  Divider(thickness: 3, color: Colors.black,),
                   SizedBox(height: 10),
                   Row(children: [
                     Image.asset(
