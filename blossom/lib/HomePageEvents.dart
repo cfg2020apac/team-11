@@ -59,10 +59,11 @@ class _HomePageEventsState extends State<HomePageEvents> {
                           child: Stack(
                             children: [
                               Padding(
-                                  padding: EdgeInsets.only(left: 10, top: 5),
+                                  padding: EdgeInsets.all(10),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(list[index]['name'],
                                           style: TextStyle(
@@ -73,13 +74,14 @@ class _HomePageEventsState extends State<HomePageEvents> {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           Image.asset('images/date_icon.png',
-                                              scale: 2),
+                                              scale: 2,
+                                              color: Colors.white,),
                                           Text(
                                             DateFormat(' d MMM, yy   kk:mm a')
                                                 .format(list[index]['date']
                                                     .toDate()),
                                             style:
-                                                TextStyle(color: Colors.white),
+                                                TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
                                           )
                                         ],
                                       ),
