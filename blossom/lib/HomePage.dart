@@ -3,6 +3,7 @@ import 'HomePageCategories.dart';
 import 'HomePageEvents.dart';
 import 'event_data.dart';
 import 'package:flutter/material.dart';
+import 'eventsPage/EventsPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -78,6 +79,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }
 
 class EventItemsSearch extends SearchDelegate<EventItem> {
