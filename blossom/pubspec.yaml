@@ -58,6 +58,7 @@ flutter:
     - images/Badge2.png
     - images/Badge3.png
     - images/Badge4.png
+    - images/Logo_transparent.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
