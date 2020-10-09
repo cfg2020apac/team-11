@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'AboutPage.dart';
@@ -5,7 +6,9 @@ import 'HomePage.dart';
 import 'ProfilePage.dart';
 import 'StoriesPage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
