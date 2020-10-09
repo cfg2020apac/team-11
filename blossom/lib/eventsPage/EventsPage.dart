@@ -18,12 +18,11 @@ class _EventsPageState extends State<EventsPage> {
     Size size = MediaQuery.of(context).size;
     DateTime eventTime = widget.msg['date'].toDate();
     DateTime trainingTime = widget.msg['date'].toDate();
-    String eventTimeString =
-        DateFormat('EEE, d MMM, yy   kk:mm a').format(eventTime);
+    String eventTimeString = DateFormat('EEE, d MMM, yyyy').format(eventTime);
     String ageRequirement = "10-12";
-    String trainingTimeString =
-        DateFormat(' d MMM, yy   kk:mm a').format(trainingTime);
+    String trainingTimeString = DateFormat(' d MMM, yyyy').format(trainingTime);
     String eventDescription = widget.msg['description'];
+    List participants = widget.msg['participants'];
     // String eventTimeString = DateFormat.yMMMMd().add_jm().format(eventTime);
     double kDefaultPaddin = 10;
     return Material(
@@ -40,10 +39,30 @@ class _EventsPageState extends State<EventsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(widget.msg['name'],
-                      style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                  Divider(),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.75,
+                          child: Column(
+                            children: [
+                              Text(widget.msg['name'],
+                                  style: TextStyle(
+                                      fontSize: 32, fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              NetworkImage(widget.msg["badge_url"]),
+                        )
+                      ],
+                    ),
+                  ),
+                  Divider(thickness: 3, color: Colors.black,),
                   SizedBox(height: 10),
                   Row(children: [
                     Image.asset(
@@ -53,7 +72,18 @@ class _EventsPageState extends State<EventsPage> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(eventTimeString, style: TextStyle(fontSize: 20))
+                    Text(eventTimeString, style: TextStyle(fontSize: 20)),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Image.asset('images/duration_icon.png', scale: 3.3),
+                          SizedBox(width: 10),
+                          Text(widget.msg['hours'].toString() + 'hours',
+                              style: TextStyle(fontSize: 20))
+                        ],
+                      ),
+                    ),
                   ]),
                   SizedBox(height: 10),
                   Text('Age Requirement: ' + ageRequirement,
@@ -62,6 +92,36 @@ class _EventsPageState extends State<EventsPage> {
                   Text('Training Session: ' + trainingTimeString,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  SizedBox(height: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Participants:",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        child: Expanded(
+                          child: ListView.builder(
+                              itemCount: participants.length,
+                              scrollDirection: Axis.horizontal,
+                              physics: BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return CircleAvatar(
+                                  radius: 28,
+                                  backgroundImage:
+                                      NetworkImage(participants[index]),
+                                );
+                              }),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(),
                   SizedBox(height: 10),
                   Divider(),
                   Text("Event Description",

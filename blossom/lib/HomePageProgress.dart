@@ -17,14 +17,19 @@ class HomePageProgress extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
-                  radius: 30,
-                  child: Image.asset('images/Badge1.png'),
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Furry_blue_paw_vector_logo.svg/1200px-Furry_blue_paw_vector_logo.svg.png'),
+                  ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "BWS Gratitude Ambassador",
+                      "Animal Lover Badge",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -54,14 +59,19 @@ class HomePageProgress extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
-                  radius: 30,
-                  child: Image.asset('images/Badge2.png'),
+                  radius: 32,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                        'https://www.jing.fm/clipimg/detail/325-3254388_reuse-reduce-recycle-vector-png.png'),
+                  ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "BWS Kindness Ambassador",
+                      "Recycle Guru Badge",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
