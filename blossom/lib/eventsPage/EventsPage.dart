@@ -43,9 +43,18 @@ class _EventsPageState extends State<EventsPage> {
                   Text(widget.msg['name'],
                       style:
                           TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
                   Divider(),
-                  Text(eventTimeString, style: TextStyle(fontSize: 20)),
+                  SizedBox(height: 10),
+                  Row(children: [
+                    Image.asset(
+                      'images/date_icon.png',
+                      scale: 2,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(eventTimeString, style: TextStyle(fontSize: 20))
+                  ]),
                   SizedBox(height: 10),
                   Text('Age Requirement: ' + ageRequirement,
                       style:
@@ -64,10 +73,10 @@ class _EventsPageState extends State<EventsPage> {
             ),
           ),
           Container(
-            margin:EdgeInsets.only(left:50, right: 50),
+            margin: EdgeInsets.only(left: 50, right: 50),
             padding: EdgeInsets.all(20),
             child: RaisedButton(
-              padding:EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               color: Colors.blueAccent,
               onPressed: () {},
               child: Center(
