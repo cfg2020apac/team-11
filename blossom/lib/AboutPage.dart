@@ -211,6 +211,10 @@ var contact = new Column(
 List<Faq> faqs = [
   new Faq(
       'Who is Blossom World Society?',
+      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged.']
+  ),
+  new Faq(
+      'Who is Blossom World Society?',
       ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged. In the course of having youths plan and run BWS\'s voluntary services, we also nurture and develop leadership qualities in the younger generation for them to be able to contribute back to community service and charitable activities.']
   ),
   new Faq(
@@ -220,10 +224,6 @@ List<Faq> faqs = [
   new Faq(
       'What are badges?',
       ['Badges are special achievements you can earn by participated in various projects. There are four types of badges - Sincerity, Gratitude, Service, and Kindness - representing the four core values of BWS!',]
-  ),
-  new Faq(
-      'Who is Blossom World Society?',
-      ['Established since 2008, Blossom World Society (BWS) is dedicated to providing a positive environment for our younger generation to grow and develop with good moral values and character. Our goal is to inspire a gracious generation that contributes positively to family, society and country. We firmly believe that one who is filial, will also be empathetic and grateful towards others. We bring together younger generation of all races and religions in Singapore who are keen to volunteer their services for the underprivileged. In the course of having youths plan and run BWS\'s voluntary services, we also nurture and develop leadership qualities in the younger generation for them to be able to contribute back to community service and charitable activities.']
   ),
   new Faq(
       'How to I become a volunteer?',
