@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class EventItem {
   final String title;
   final String category;
@@ -11,36 +13,16 @@ class EventItem {
 List<EventItem> loadEventItem() {
   var events = <EventItem>[
     EventItem(
-      category: "Giving",
-      title: "Give out Food",
-    ),
-    EventItem(
-      category: "Giving",
-      title: "Give out Money",
-    ),
-    EventItem(
-      category: "Giving",
-      title: "Give out Clothes",
+      category: "Experiences",
+      title: "Discovering Treasure Through Stories",
     ),
     EventItem(
       category: "Donation",
-      title: "Donate Money",
+      title: "Event 2",
     ),
     EventItem(
-      category: "Test A",
-      title: "Donate Clothes",
-    ),
-    EventItem(
-      category: "Test B",
-      title: "Donate Clothes",
-    ),
-    EventItem(
-      category: "Test C",
-      title: "Donate Clothes",
-    ),
-    EventItem(
-      category: "Test D",
-      title: "Donate Clothes",
+      category: "Food",
+      title: "Event 3",
     ),
   ];
   return events;
