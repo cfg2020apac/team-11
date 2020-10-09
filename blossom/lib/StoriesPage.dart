@@ -28,7 +28,10 @@ class _StoriesPageState extends State<StoriesPage> {
 
   @override
   Widget build(BuildContext context) {
-    const boxSpace = SizedBox(height: 15);
+    const boxSpace = SizedBox(height: 25);
+    const boxWide = SizedBox(width: 12);
+    const smallHeight = SizedBox(height: 5);
+    const smallWide = SizedBox(width: 7);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,13 +40,19 @@ class _StoriesPageState extends State<StoriesPage> {
       body: Column(
         children: <Widget>[
           Container(
-            height: 200,
+            // height: 200,
             child: Column(
               children: <Widget>[
                 Container(
                   height: 40,
                   child: Center(
-                    child: Text("Share Your Experience!"),
+                    child: Text(
+                      "Share Your Experience!",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
                 Container(
@@ -52,68 +61,129 @@ class _StoriesPageState extends State<StoriesPage> {
                     controller: myController,
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
+                      hintText: "Your experience...",
                     ),
                     maxLines: 3,
                   ),
                 ),
-                Center(
-                  child: RaisedButton(
-                    child: Text("Post"),
-                    onPressed: () {
-                      input = myController.text;
-                    },
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: <Widget>[
+                        RaisedButton(
+                          child: Text("Upload Image(s)"),
+                          onPressed: () {
+                            // input = myController.text;
+                          },
+                        ),
+                        smallWide,
+                        RaisedButton(
+                          child: Text("Post"),
+                          onPressed: () {
+                            input = myController.text;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
           ),
+          boxSpace,
           Container(
-            height: 40,
+            // height: 40,
             child: Center(
-              child: Text("Participants' Stories!"),
+              child: Text(
+                "Participants' Stories!",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Expanded(
             child: Scrollbar(
-              child: ListView(
-                children: <Widget>[
-                  for (int index=0; index<storyList.length; index++)
-                    Column(
-                      children: <Widget>[
-                        ListTile(
-                          leading: ExcludeSemantics(
-                            child: CircleAvatar(
-                              child: Icon(Icons.person),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: ListView(
+                  children: <Widget>[
+                    for (int index=0; index<storyList.length; index++)
+                      Card(
+                        elevation: 7,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              leading: ExcludeSemantics(
+                                child: CircleAvatar(
+                                  child: Icon(Icons.person),
+                                  // child: ImageIcon(
+                                  //   NetworkImage("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg/1200px-ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg"),
+                                  //   size: 40,
+                                  // ),
+                                ),
+                              ),
+                              title: Text(storyList[index][2]),
+                              subtitle: Text(storyList[index][0] + " on " +
+                                  storyList[index][1]),
                             ),
-                          ),
-                          title: Text(storyList[index][2]),
-                          subtitle: Text(storyList[index][0]+" on "+storyList[index][1]),
-                        ),
-                        Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            alignment: Alignment.topLeft,
-                            child: Text(storyList[index][3]),
-                        ),
-                        Center(
-                          child: IconButton(
-                            icon: likes[index] ? Icon(
-                              Icons.favorite_border,
-                              color: Colors.grey,
-                            ) : Icon(
-                              Icons.favorite,
-                              color: Colors.red,
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12),
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                storyList[index][3],
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                likes[index] = !likes[index];
-                              });
-                            },
-                          ),
+                            smallHeight,
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    index.toString(),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Icon(Icons.image_outlined, color: Colors.teal,),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                  icon: likes[index] ? Icon(
+                                    Icons.favorite_border,
+                                    // color: Colors.grey,
+                                  ) : Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      likes[index] = !likes[index];
+                                    });
+                                  },
+                                ),
+                                Icon(
+                                  Icons.comment_outlined,
+                                ),
+                                boxWide,
+                                Icon(
+                                  Icons.share,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        boxSpace,
-                      ],
-                    ),
-                ],
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
