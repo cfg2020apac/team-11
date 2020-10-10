@@ -46,11 +46,6 @@ class _AboutPageState extends State<AboutPage> {
             ]
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _openNewPage,
-        tooltip: 'Chat with Blossom',
-        child: Icon(Icons.chat),
-      ),
     );
     ;
   }

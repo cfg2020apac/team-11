@@ -32,8 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
               data['NoOfcompletedEvents'],
               data['NoOfUpcomingEvents'],
               data["CompletedEvents"].cast<String>(),
-              data["imageUrl"]
-              );
+              data["imageUrl"]);
           return Scaffold(
               body: ListView(children: <Widget>[
             ProfileHeader(profile: profile),
@@ -74,7 +73,7 @@ class HistoryEvents extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   profile.completedEvents[0],
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -90,7 +89,7 @@ class HistoryEvents extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   profile.completedEvents[1],
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ),
