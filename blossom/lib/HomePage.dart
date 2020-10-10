@@ -50,19 +50,19 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(height: 20),
               Text(
-                "Category",
+                "Categories",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               HomePageCategories(),
               SizedBox(height: 20),
               Text(
-                "Progress",
+                "My Badge Progress",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               HomePageProgress(),
               SizedBox(height: 20),
               Text(
-                "Event List",
+                "Explore Events",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               HomePageEvents()
